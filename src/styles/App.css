@@ -1,0 +1,116 @@
+@import "./header.css";
+@import "./media.css";
+@import "./modal.css";
+
+:root {
+  --primary-color: #0d253f;
+  --secondary-color: #01b4e4;
+  --tertiary-color: #90cea1;
+}
+
+@media (min-width: 768px) {
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1300px;
+  }
+}
+
+#mdb-route-container {
+  min-height: calc(100vh - 70px - 4.4rem);
+  overflow: hidden;
+}
+
+#mdb-main {
+  padding: 0;
+  min-height: 100vh;
+}
+
+#mdb-media-news,
+#mdb-media-full,
+#mdb-media-table,
+#mdb-user-table {
+  min-height: calc(100vh - 70px - 50px - 6.4rem);
+}
+
+.mdb-user-table {
+  min-height: calc(100vh - 70px - 70px - 70px - 6rem);
+}
+
+.mdb-profile {
+  min-height: calc(100vh - 70px - 70px - 6rem);
+}
+
+#mdb-password-change-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#mdb-search-form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#mdb-search-form button {
+  width: 100%;
+}
+
+#mdb-found-media {
+  min-height: calc(100vh - 450px - 4rem);
+}
+
+.mdb-profile-change-password-button {
+  width: 100%;
+}
+
+.form-label {
+  margin-top: 0.5rem;
+  color: var(--primary-color);
+  font-weight: bolder;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+#mdb-spinner {
+  position: absolute;
+  top: calc(100vh / 2);
+  left: calc(100vw / 2 - 2rem);
+  width: 4rem;
+  height: 4rem;
+  border-width: 0.35em;
+}

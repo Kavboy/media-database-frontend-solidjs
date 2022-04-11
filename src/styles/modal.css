@@ -1,0 +1,17 @@
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: #FFF;
+}
+
+.delete-modal-text {
+    font-size: 1.5rem;
+}
+
+#mdb-modal-spinner {
+    top: calc(100vh / 2);
+    left: calc(100vw / 2 - 2rem);
+    width: 4rem;
+    height: 4rem;
+    border-width: 0.35em;
+}
