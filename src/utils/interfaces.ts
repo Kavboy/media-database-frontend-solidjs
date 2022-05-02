@@ -1,4 +1,6 @@
-export interface Media {
+import { Color } from "solid-bootstrap"
+
+interface Media {
     id: string,
     type: string,
     title: string,
@@ -14,4 +16,26 @@ export interface Media {
     release_date: string,
     created_at: string,
     updated_at: string
+}
+
+interface seenMedia {
+    id: number
+}
+
+interface User {
+    username: string,
+    role: string,
+    seen_media: seenMedia
+}
+
+interface AlertError { 
+    variant: Color, 
+    show: boolean, 
+    content: string 
+}
+
+export type {
+    Media,
+    User,
+    AlertError
 }

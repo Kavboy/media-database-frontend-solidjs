@@ -8,7 +8,7 @@ const axiosLaravelAPI = (): AxiosInstance => {
   let hostname = window.location.hostname;
 
   hostname = 'http://localhost:8080';
-  hostname = 'http://192.168.178.21/mdb-backend'
+  // hostname = 'http://192.168.178.21/mdb-backend'
 
   return axios.create({
     baseURL: hostname + '/api/v1',

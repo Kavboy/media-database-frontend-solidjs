@@ -18,11 +18,20 @@ export default function News() {
           <span className="visually-hidden">Loading...</span>
         </Spinner>
       </Show>
-      <Show when={!mediaNews.loading && mediaNews.error}>
+      <Show
+        when={
+          (!mediaNews.loading && mediaNews.error) ||
+          (!mediaNews.loading && mediaNews().data.length == 0)
+        }
+      >
         <NoMedia />
         <NoMedia />
       </Show>
-      <Show when={!mediaNews.loading && !mediaNews.error}>
+      <Show
+        when={
+          !mediaNews.loading && !mediaNews.error && mediaNews().data.length > 0
+        }
+      >
         <For
           each={
             //@ts-ignore server returns json object with data array

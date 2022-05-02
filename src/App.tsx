@@ -6,6 +6,8 @@ import "./styles/index.css";
 import "./styles/App.css";
 
 import { routes } from "./routes";
+import { ErrorProvider } from "./contexts/errorContext";
+import { AuthProvider } from "./contexts/authContext";
 
 const App: Component = () => {
   const location = useLocation();
@@ -13,11 +15,14 @@ const App: Component = () => {
 
   return (
     <>
-      <Header />
-
-      <Container id="mdb-route-container">
-        <Route />
-      </Container>
+      <ErrorProvider>
+        <AuthProvider>
+          <Header />
+          <Container id="mdb-route-container">
+            <Route />
+          </Container>
+        </AuthProvider>
+      </ErrorProvider>
     </>
   );
 };

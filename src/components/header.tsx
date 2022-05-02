@@ -4,10 +4,14 @@ import { Link } from "solid-app-router";
 import Fa from "solid-fa";
 import { faKey, faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import LoginModal from "./loginModal";
+import { useAuth } from "../contexts/authContext";
 
 export default function Header() {
   const [loginShow, setLoginShow] = createSignal(false);
-  const auth = false;
+  const [user, { logout, check }] = useAuth();
+
+  check();
+
   const logginFallback = (
     <>
       <Dropdown>
@@ -25,7 +29,11 @@ export default function Header() {
             </Link>
           </Nav.Item>
           <Nav.Item>
-            <Button id="mdb-nav-button" aria-label="Logout">
+            <Button
+              id="mdb-nav-button"
+              aria-label="Logout"
+              onClick={() => logout()}
+            >
               <Fa icon={faSignOutAlt} />
             </Button>
           </Nav.Item>
@@ -50,7 +58,7 @@ export default function Header() {
             </Nav.Item>
           </Nav>
           <Nav className="me-3">
-            <Show when={!auth} fallback={logginFallback}>
+            <Show when={!user()} fallback={logginFallback}>
               <Nav.Item>
                 <Nav.Link
                   id="mdb-nav-button"
