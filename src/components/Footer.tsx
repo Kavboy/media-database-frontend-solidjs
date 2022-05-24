@@ -12,7 +12,7 @@ const Footer = (props) => {
   return (
     <Container id="mdb-footer" fluid>
       <p className="mdb-copy-right pt-1">
-        Kevin Kasprus Studienprojekt <Fa icon={faCopyright} /> 2022
+        Studienprojekt <Fa icon={faCopyright} /> 2022
       </p>
     </Container>
   );
