@@ -8,6 +8,7 @@ import { useAuth } from "../contexts/authContext";
 
 export default function Header() {
   const [loginShow, setLoginShow] = createSignal(false);
+  // @ts-ignore
   const [user, { logout, check }] = useAuth();
 
   check();

@@ -8,10 +8,11 @@ import "./styles/App.css";
 import { routes } from "./routes";
 import { ErrorProvider } from "./contexts/errorContext";
 import { AuthProvider } from "./contexts/authContext";
+import Footer from "./components/Footer";
 
 const App: Component = () => {
   const location = useLocation();
-  const Route = useRoutes(routes);
+  const Routes = useRoutes(routes);
 
   return (
     <>
@@ -19,8 +20,9 @@ const App: Component = () => {
         <AuthProvider>
           <Header />
           <Container id="mdb-route-container">
-            <Route />
+            <Routes />
           </Container>
+          <Footer />
         </AuthProvider>
       </ErrorProvider>
     </>

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
+import { MediaPages } from 'src/utils/interfaces';
 
 /**
  * Creates a new axios instance for the backend
@@ -105,9 +106,9 @@ const changeUserPassword = (username: string, data: any): Promise<AxiosResponse<
 /**
  * Request to get the media data
  * @param page
- * @returns {Promise<AxiosResponse<any>>}
+ * @returns {Promise<MediaPages>}
  */
-const getMediasTable = (page): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/media/table?page=' + page)
+const getMediasTable = (page): Promise<MediaPages> => axiosLaravelAPI().get('/media/table?page=' + page)
   .then(res => {
     if (res.status === 200) {
       return res.data;
@@ -149,6 +150,24 @@ const getMedia = (id): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/me
   .catch(error => {
     throw error;
   });
+
+/**
+ * Adds media to the database
+ * 
+ * @param data 
+ * @returns 
+ */
+const addMedia = (data: object) : Promise<any> => axiosLaravelAPI().post('/media', data, {
+  headers: {
+    'Content-Type': 'multipart/form-data',
+  },
+}).then(res => {
+  if (res.status === 201) {
+    location.replace("/media/" + res.data.id);
+  }
+}).catch(error => {
+  throw error;
+});
 
 /**
  * Request to mark media as seen
@@ -212,9 +231,9 @@ const searchMedia = (data: any): Promise<AxiosResponse<any>> => axiosLaravelAPI(
 
 /**
  * Request to get all mediums
- * @returns {Promise<AxiosResponse<any>>}
+ * @returns {Promise<Array<string>>}
  */
-const getMediums = (): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/medium')
+const getMediums = (): Promise<Array<string>> => axiosLaravelAPI().get('/medium')
   .then(res => {
     if (res.status === 200) {
       return res.data.map(medium => medium.medium);
@@ -227,9 +246,9 @@ const getMediums = (): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/me
 
 /**
  * Request to get all Genres
- * @returns {Promise<AxiosResponse<any>>}
+ * @returns {Promise<Array<string>>}
  */
-const getGenre = (): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/genre')
+const getGenre = (): Promise<Array<string>> => axiosLaravelAPI().get('/genre')
   .then(res => {
     if (res.status === 200) {
       return res.data.map(genre => genre.name);
@@ -242,9 +261,9 @@ const getGenre = (): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/genr
 
 /**
  * Request to get all age ratings
- * @returns {Promise<AxiosResponse<any>>}
+ * @returns {Promise<Array<string>>}
  */
-const getFSK = (): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/fsk')
+const getFSK = (): Promise<Array<string>> => axiosLaravelAPI().get('/fsk')
   .then(res => {
     if (res.status === 200) {
       return res.data.map(fsk => fsk.fsk);
@@ -328,6 +347,7 @@ export {
   markMediaUnseen,
   getNews,
   getMedia,
+  addMedia,
   getTitles,
   searchMedia,
   getUsersTable,

@@ -1,6 +1,9 @@
 @import "./header.css";
 @import "./media.css";
 @import "./modal.css";
+@import "./table.css";
+@import "./footer.css";
+@import "./form.css";
 
 :root {
   --primary-color: #0d253f;
@@ -35,7 +38,7 @@
 }
 
 #mdb-route-container {
-  min-height: calc(100vh - 70px - 4.4rem);
+  min-height: calc(100vh - 30px - 4.4rem);
   overflow: hidden;
 }
 

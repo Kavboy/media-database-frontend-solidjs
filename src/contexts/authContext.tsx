@@ -24,63 +24,80 @@ export function AuthProvider(props) {
     }
   }
 
-  function logout() {
-    csrf()
-      .then(() => {
-        axiosLaravelAPI()
-          .post("/logout")
-          .then((res) => {
-            if (res.status === 200) {
-              setUser(null);
-            } else {
-              setUser(null);
-            }
-          });
-      })
-      .catch((error) => {
+  async function logout() {
+    try {
+      await csrf();
+      const res = await axiosLaravelAPI().post("/logout");
+
+      if (res.status === 200) {
         setUser(null);
-        throw error;
-      });
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      setUser(null);
+      throw error;
+    }
   }
 
-  function whoami() {
-    axiosLaravelAPI()
-      .get("/user/whoami")
-      .then((res) => {
+  async function whoami() {
+    try {
+      if (!user()) {
+        const res = await axiosLaravelAPI().get("/user/whoami");
+
         if (res.status === 200) {
           setUser(res.data);
         }
-      })
-      .catch((error) => {
-        throw error;
-      });
+      }
+    } catch (error) {
+      throw error;
+    }
   }
 
-  function check() {
-    axiosLaravelAPI()
-      .get("/check")
-      .then((res) => {
+  async function check() {
+    try {
+      if (!user()) {
+        const res = await axiosLaravelAPI().get("/check");
+
         if (res.status === 204) {
           whoami();
         } else {
           setUser(null);
         }
-      })
-      .catch((error) => {
-        setUser(null);
-      });
+      }
+    } catch (error) {
+      setUser(null);
+    }
   }
 
-  function changeOwnPassword(data: any) {
-    axiosLaravelAPI()
-      .post("/user/change_password", data)
-      .then((res) => {
+  async function changeOwnPassword(data: any) {
+    try {
+      await csrf();
+      const res = await axiosLaravelAPI().post("/user/change_password", data);
+
+      if (res.status === 200) {
         return true;
-      })
-      .catch((error) => {
-        throw error;
-      });
+      } else {
+        return false;
+      }
+    } catch (error) {
+      throw error;
+    }
   }
+
+  const requireAuth = async (roles = [], redirectUrl = "/") => {
+    await check();
+    if (user() === null) {
+      location.replace(redirectUrl);
+    } else if (
+      user() !== null &&
+      roles.length !== 0 &&
+      !roles?.includes(user()?.role)
+    ) {
+      location.replace(redirectUrl);
+    }
+    return true;
+  };
 
   const store = [
     user,
@@ -90,6 +107,7 @@ export function AuthProvider(props) {
       whoami,
       check,
       changeOwnPassword,
+      requireAuth,
     },
   ];
 

@@ -1,0 +1,55 @@
+.mdb-table-title {
+    min-width: 180px;
+}
+
+.mdb-media-table {
+    min-height: calc(100vh - 200px);
+}
+
+.mdb-table-poster {
+    max-width: 92px;
+    height: auto;
+}
+
+.mdb-table-display, .mdb-table-edit, .mdb-table-delete {
+    vertical-align: middle!important;
+    text-align: center;
+}
+
+.mdb-table-display:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mdb-table-edit:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.mdb-table-delete:hover {
+    color: var(--danger);
+    cursor: pointer;
+}
+
+.mdb-table-add-new {
+    background-color: var(--primary-color) !important;
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 0.2rem!important;
+}
+
+.mdb-table-add-new a {
+    display: block;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.mdb-table-add-new:hover {
+    background-color: var(--secondary-color) !important;
+    cursor: pointer;
+}
+
+.mdb-table-last-admin {
+    width: 20%;
+}

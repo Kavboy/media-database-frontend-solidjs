@@ -1,0 +1,10 @@
+#mdb-footer {
+    min-height: 30px;
+    background-color: var(--primary-color);
+    color: #FFF;
+    text-align: right;
+}
+
+.mdb-copy-right {
+    margin: 0;
+}

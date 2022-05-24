@@ -33,7 +33,7 @@ const getFSKClass = (ageRating: string): string => {
  * @param size
  * @returns {string}
  */
-const getPosterSRC = (tmdbID: string, posterPath: string, size?: number): string => {
+const getPosterSRC = (tmdbID: string, posterPath: string, size?: string): string => {
   let imgSrc: string;
   if (tmdbID && !posterPath.includes('base64') && !posterPath.includes('storage')) {
     imgSrc = `https://www.themoviedb.org/t/p/${size ? size : 'w185'}${posterPath}`;
@@ -45,6 +45,9 @@ const getPosterSRC = (tmdbID: string, posterPath: string, size?: number): string
 
 }
 
+/**
+ * English to German genre mapping
+ */
 const genresGerman = {
   "action": "Aktion",
   "adventure": "Abenteuer",
@@ -85,5 +88,6 @@ const genresGerman = {
 export {
   getFSKClass,
   getPosterSRC,
-  genreDisplay
+  genreDisplay,
+  genresGerman
 }

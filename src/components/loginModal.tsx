@@ -1,13 +1,15 @@
 import Joi from "joi";
 import { Button, Form, Modal, Spinner } from "solid-bootstrap";
-import { createEffect, createSignal, mergeProps, Show } from "solid-js";
-import { User } from "src/utils/interfaces";
+import { createSignal, mergeProps, Show } from "solid-js";
 import { useAuth } from "../contexts/authContext";
 import { useError } from "../contexts/errorContext";
 
 export default function LoginModal(props) {
   const merged = mergeProps({ show: false, onHide: () => {} }, props);
+
+  // @ts-ignore
   const [user, { login }] = useAuth();
+  // @ts-ignore
   const [errorContext, { setNetworkError }] = useError();
 
   /**
