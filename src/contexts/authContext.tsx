@@ -31,11 +31,14 @@ export function AuthProvider(props) {
 
       if (res.status === 200) {
         setUser(null);
+        location.replace("");
       } else {
         setUser(null);
+        location.replace("");
       }
     } catch (error) {
       setUser(null);
+      location.replace("");
       throw error;
     }
   }
