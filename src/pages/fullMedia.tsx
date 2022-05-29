@@ -23,7 +23,7 @@ export default function FullMedia() {
       </Show>
       <Show when={!response.loading && !response.error}>
         <h2 className="mdb-page-header mdb-card-style mt-3 p-2">
-          {(response() as Media).title}
+          {response()?.title}
         </h2>
         <MediaComponent media={response()} full />
       </Show>

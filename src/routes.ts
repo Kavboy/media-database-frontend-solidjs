@@ -1,8 +1,7 @@
-import { createResource, lazy } from 'solid-js';
+import { lazy } from 'solid-js';
 import type { RouteDefinition } from 'solid-app-router';
 
 import News from './pages/news';
-import { useAuth } from './contexts/authContext';
 
 
 export const routes: RouteDefinition[] = [

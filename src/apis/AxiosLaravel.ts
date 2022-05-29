@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { MediaPages } from 'src/utils/interfaces';
+import { Media, MediaPages } from 'src/utils/interfaces';
 
 /**
  * Creates a new axios instance for the backend
@@ -138,9 +138,9 @@ const getMediasTable = (page): Promise<MediaPages> => axiosLaravelAPI().get('/me
 /**
  * Request to get a single media with specific id
  * @param id
- * @returns {Promise<AxiosResponse<any>>}
+ * @returns {Promise<Media|null>}
  */
-const getMedia = (id): Promise<AxiosResponse<any>> => axiosLaravelAPI().get('/media/' + id)
+const getMedia = (id): Promise<Media|null> => axiosLaravelAPI().get('/media/' + id)
   .then(res => {
     if (res.status === 200) {
       return res.data;
